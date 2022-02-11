@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import GoogleLogin from "react-google-login";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 import 'date-fns'
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns'
@@ -11,6 +11,7 @@ import { Link } from "react-scroll";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
+import Stations from './Stations';
 
 const Header = () => {
     const [loginData, setLoginData] = useState(
@@ -124,6 +125,9 @@ const Header = () => {
                                 'aria-label': 'change time'
                             }}
                             />
+                            <div>
+                <Stations/>
+                </div>
                             </Grid>
                             </MuiPickersUtilsProvider>
                             </form>
@@ -142,7 +146,7 @@ const Header = () => {
                     </GoogleLogin>
                     )}
                 </div>
-
+                
             </div>
         </div>
         </div>
