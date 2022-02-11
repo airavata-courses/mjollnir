@@ -2,16 +2,30 @@ from http.client import HTTPException
 
 from DAOClass import DAOClass as DAOClass
 from datetime import datetime
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
 
-@app.route('/getImage/<int:year>/<int:month>/<int:date>/<int:startHour>/<int:endHour>/<radarId>', methods=['GET'])
-def getImage(year, month, date, startHour, endHour, radarId):
+@app.route('/getImage', methods=['POST'])
+def get_image():
     a = DAOClass()
-    result=a.imageWriter(radarId, datetime(year, month, date, startHour, 0), datetime(year, month,date,endHour, 0))
-    if result==False:
+    print(request.is_json)
+    print(request.get_json(force=True))
+    request_data = request.get_json(force=True)
+    result = a.imagewriter(
+            request_data['radarId'],
+            datetime(
+                int(request_data['year']),
+                int(request_data['month']),
+                int(request_data['date']),
+                int(request_data['startHour']), 0),
+            datetime(
+                int(request_data['year']),
+                int(request_data['month']),
+                int(request_data['date']),
+                int(request_data['endHour']), 0))
+    if result is None:
         raise HTTPException(status_code=404, detail="Radar station is not found")
     else:
         return result

@@ -9,9 +9,9 @@ const { routeURLS: {DataRetrival}} = config;
 const api = apiAdapter(DataRetrival);
 
 
-router.get('/getImage/:year/:date/:startHour/:endHour/:radarId', (req, res) => {
+router.post('/getImage', (req, res) => {
     
-    api.get(req.path,{Headers:{'Access-Control-Allow-Origin': '*',}}).then(resp => {
+    api.post(req.path,req.body).then(resp => {
         res.send(resp.data);
     });
 });
