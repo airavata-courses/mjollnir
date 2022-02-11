@@ -18,6 +18,7 @@ import com.example.demo.service.SignInService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
+@RequestMapping(path="/usercontroller")
 public class SignInController {
 	
 	@Autowired
@@ -31,7 +32,7 @@ public class SignInController {
 	@GetMapping(path = "/root")
 	public String Hello() {
 		System.out.println("Hello world");
-		return "Hello world";
+		return "Hello wjhzDbhjfgorld";
 		//this.inService.saveUser(user);
 	}
 
