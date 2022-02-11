@@ -13,7 +13,7 @@ const config = {
 
 	routeURLS: {
 
-	login_audit: "http:/localhost:8080/",
+	login_audit: "http://localhost:8080/",
 
 	DataRetrival: "http://localhost:5000/",
 	

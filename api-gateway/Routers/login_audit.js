@@ -8,37 +8,43 @@ const { routeURLS: {login_audit}} = config;
 
 const api = apiAdapter(login_audit);
 
-router.get('/getData/:userName/:page', (req, res) => {
+router.get('/radarcontroller/getData/:userName/:page', (req, res) => {
     
     api.get(req.path,{Headers:{'Access-Control-Allow-Origin': '*',}}).then(resp => {
         res.send(resp.data);
     });
 });
 
-router.post('/saveRadar', (req, res) => {
+router.post('/radarcontroller/saveRadar', (req, res) => {
     api.post(req.path, req.body).then(resp => {
         res.send(resp.data);
     });
 });
-
-router.get('/root', (req, res) => {
+router.get('/radarcontroller/radarlocations', (req, res) => {
+    console.log("Root hit");
+    api.get(req.path,{Headers:{'Access-Control-Allow-Origin': '*',}}).then(resp => {
+        res.send(resp.data);
+    });
+});
+router.get('/usercontroller/root', (req, res) => {
+    console.log("Root hit");
     api.get(req.path,{Headers:{'Access-Control-Allow-Origin': '*',}}).then(resp => {
         res.send(resp.data);
     });
 });
 
-router.post('/root/save', (req, res) => {
+router.post('/usercontroller/root/save', (req, res) => {
     console.log("rootmsave ");
     api.post(req.path, req.body,{Headers:{'Access-Control-Allow-Origin': '*',}}).then(resp => {
         res.send(resp.data);
     });
 });
-router.post('/root/delete', (req, res) => {
+router.post('/usercontroller/root/delete', (req, res) => {
     api.post(req.path, req.body).then(resp => {
         res.send(resp.data);
     });
 });
-router.post('/root/auth', (req, res) => {
+router.post('/usercontroller/root/auth', (req, res) => {
     api.post(req.path, req.body).then(resp => {
         res.send(resp.data);
     });

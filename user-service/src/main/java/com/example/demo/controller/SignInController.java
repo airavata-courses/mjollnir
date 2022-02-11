@@ -32,13 +32,13 @@ public class SignInController {
 	@GetMapping(path = "/root")
 	public String Hello() {
 		System.out.println("Hello world");
-		return "Hello wjhzDbhjfgorld";
+		return "Hello world";
 		//this.inService.saveUser(user);
 	}
 
 	@PostMapping(path = "/root/save")
 	public ResponseEntity saveUser(@RequestBody User user) {
-		System.out.println("Recieved rrqu");
+		
 		
 		this.inService.saveUser(user);
 		return ResponseEntity.ok(HttpStatus.OK);
