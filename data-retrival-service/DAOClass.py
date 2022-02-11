@@ -10,7 +10,7 @@ class DAOClass:
     def __init__(self):
         self.templocation= tempfile.mkdtemp()
 
-    def imageWriter(self,radar_id,start_date,end_date):
+    def imagewriter(self,radar_id,start_date,end_date):
 
         try:
 
@@ -37,7 +37,7 @@ class DAOClass:
             return json
         except Exception:
             print('Error while loading the file')
-            return False
+            return None
         finally:
             dirs = os.listdir()
             cur_dir = os.getcwd()
