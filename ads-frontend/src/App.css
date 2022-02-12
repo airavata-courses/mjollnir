@@ -13,6 +13,8 @@
   }
 }
 
+
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -150,7 +152,15 @@ nav ul li {
   font-size: 1rem;
   background-color: var(--primary-light-grey);
 }
-
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: flex;
+}
 .btn-main-offer:hover {
   text-decoration: none;
   background-color: var(--primary-light-grey);

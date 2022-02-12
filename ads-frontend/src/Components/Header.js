@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 import Stations from './Stations';
+import {getRadarStations,sendData} from '../api_calls.js';
 
 const Header = () => {
     const [loginData, setLoginData] = useState(
@@ -49,9 +50,10 @@ const Header = () => {
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
-        console.log(date);
+        localStorage.setItem('selectedDate',selectedDate);
+        // console.log(date);
     };
-
+  
     const {handleSubmit} = useForm();
 
         const onSubmit = (r) => {
@@ -126,13 +128,18 @@ const Header = () => {
                             }}
                             />
                             <div>
-                <Stations/>
-                </div>
+                            <Stations/>
+                
+                    </div>
                             </Grid>
                             </MuiPickersUtilsProvider>
-                            </form>
+                    </form>
                     </div>
-                    <button className="btn-main-offer contact-btn" type="submit">submit</button>
+                    
+                    
+                   
+                    
+                    <button className="btn-main-offer contact-btn" type="submit" onClick={sendData} >submit</button>
                     </>
                     ) : (
                     
