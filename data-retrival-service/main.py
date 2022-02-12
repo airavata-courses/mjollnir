@@ -10,6 +10,18 @@ app = Flask(__name__)
 @app.route('/getImage', methods=['POST'])
 def get_image():
     a = DAOClass()
+    changeDic={'Jan':'1',
+               'Feb':'2',
+               'Mar':'3',
+               'Apr':'4',
+               'May':'5',
+               'Jun':'6',
+               'Jul':'7',
+               'Aug':'8',
+               'Sep':'9',
+               'Oct':'10',
+               'Nov':'11',
+               'Dec':'12'}
     print(request.is_json)
     print(request.get_json(force=True))
     request_data = request.get_json(force=True)
@@ -17,14 +29,14 @@ def get_image():
             request_data['radarId'],
             datetime(
                 int(request_data['year']),
-                int(request_data['month']),
+                int(changeDic[request_data['month']]),
                 int(request_data['date']),
                 int(request_data['startHour']), 0),
             datetime(
                 int(request_data['year']),
-                int(request_data['month']),
+                int(changeDic[request_data['month']]),
                 int(request_data['date']),
-                int(request_data['endHour']), 0))
+                int(request_data['startHour'])+1, 0))
     if result is None:
         raise HTTPException(status_code=404, detail="Radar station is not found")
     else:

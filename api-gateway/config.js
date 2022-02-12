@@ -14,9 +14,9 @@ const config = {
 
 	routeURLS: {
 
-	login_audit: "http://localhost:8080/",
+	login_audit: "http://127.0.0.1:8080/",
 
-	DataRetrival: "http://localhost:5000/",
+	DataRetrival: "http://127.0.0.1:5000/",
 	
 	}
 };
