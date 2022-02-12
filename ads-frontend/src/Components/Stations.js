@@ -12,25 +12,30 @@ class Stations extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('keydown', this.tabKeyPressed);
-    window.addEventListener('mousedown', this.mouseClicked);
-    var stats=getRadarStations();
-    this.setState({locations:stats});
+    // window.addEventListener('keydown', this.tabKeyPressed);
+    // window.addEventListener('mousedown', this.mouseClicked);
     
-    console.log(stats);
+    getRadarStations().then(res => {
+      var station = [];
+      for(var key in res) {
+        station.push({'label': res[key], 'value': key});
+      }
+      this.setState({...this.state, locations: station});
+    }).catch(err => {
+      console.log(err);
+    });
+
   }
-
-
-
-  onChange = (item, name) => { console.log(item, name); }
+  onChange = (item, name) => { 
+   
+    localStorage.setItem('rStation',item.value);
+    
+  }
 
   render() {
     const { locations } = this.state;
 
     return (
-      <div className="App">
-
-
         <div className="wrapper">
     
           <Dropdown
@@ -40,9 +45,7 @@ class Stations extends Component {
             onChange={this.onChange}
           />
         </div>
-
-
-      </div>
+    
     );
   }
 }
