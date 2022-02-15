@@ -42,6 +42,7 @@ class Stations extends Component {
             name="location"
             title="Select location"
             list={locations}
+           
             onChange={this.onChange}
           />
         </div>

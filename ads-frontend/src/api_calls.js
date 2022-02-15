@@ -21,10 +21,10 @@ export function sendData()
            "endHour" : tim[0]
        }
 
-    axios.post('http://localhost:5500/getImage/', sen).then(res => {
-    console.log(res);
-    console.log(res.data);
-  })
+    return axios.post('http://localhost:5500/getImage', sen).then(res => {
+    console.log(res)  
+    return res.data.image
+    })
 }
 
 export function getRadarStations()

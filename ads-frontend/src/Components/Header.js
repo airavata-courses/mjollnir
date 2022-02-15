@@ -13,13 +13,34 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 import Stations from './Stations';
 import {getRadarStations,sendData} from '../api_calls.js';
+import DisplayImage from "./displayImage";
+import im from './im.json'
 
 const Header = () => {
+
     const [loginData, setLoginData] = useState(
         localStorage.getItem("loginData")
         ? JSON.parse(localStorage.getItem("loginData"))
         : null
     );
+    const [encoded_image, setImagedata] = useState('');
+    const renderImage=() =>
+                {
+                
+                 sendData().then(res => {
+                
+                 console.log(res);
+            //    const {encoded_image} = res.data.body;
+                             if(res) {
+                                setImagedata(
+                                    "data:image/png;base64," + res
+                                )
+                             }
+
+                 }).catch(err => {
+                 console.log(err);
+                 });
+                 }
 
     const handleFailure = (result) => {
         alert(result);
@@ -61,6 +82,9 @@ const Header = () => {
         r.target.reset();
     }
 
+
+
+   
     return (
         <div>
               <nav className="navbar navbar-expand-lg navbar-light bg-black fixed-top">
@@ -137,9 +161,10 @@ const Header = () => {
                     </div>
                     
                     
-                   
+                    <DisplayImage image={ encoded_image }/>
                     
-                    <button className="btn-main-offer contact-btn" type="submit" onClick={sendData} >submit</button>
+                    <button className="btn-main-offer contact-btn" type="submit" onClick={renderImage} >submit</button>
+                    
                     </>
                     ) : (
                     
@@ -152,6 +177,7 @@ const Header = () => {
                     >
                     </GoogleLogin>
                     )}
+                   
                 </div>
                 
             </div>

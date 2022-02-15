@@ -10,6 +10,7 @@ app = Flask(__name__)
 @app.route('/getImage', methods=['POST'])
 def get_image():
     a = DAOClass()
+    print(request)
     changeDic={'Jan':'1',
                'Feb':'2',
                'Mar':'3',
@@ -37,6 +38,7 @@ def get_image():
                 int(changeDic[request_data['month']]),
                 int(request_data['date']),
                 int(request_data['startHour'])+1, 0))
+    print("hiiiiiiiiii")
     if result is None:
         raise HTTPException(status_code=404, detail="Radar station is not found")
     else:
