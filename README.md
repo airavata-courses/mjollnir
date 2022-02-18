@@ -36,3 +36,15 @@ docker run -it -p 8080:8080 kartheekj59/mjollnir-user-service:latest
 Data Retrieval service
 
 docker run -it -p 8000:8000 kartheekj59/mjollnir-data-retieval-service:latest
+
+# Api Gateway service
+
+Run ApiGateway service locally without docker
+
+git checkout main
+
+cd api-gateway
+
+npm install
+
+node index.js
