@@ -30,3 +30,9 @@ First, run the mongo service before starting up the java application
 docker run -it -p 27017:27017 mongo:4.0.4
 
 docker run -it -p 8080:8080 kartheekj59/mjollnir-user-service:latest
+
+# Data Retrieval Service
+
+Data Retrieval service
+
+docker run -it -p 8000:8000 kartheekj59/mjollnir-data-retieval-service:latest
