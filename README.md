@@ -48,3 +48,19 @@ cd api-gateway
 npm install
 
 node index.js
+
+# UI
+
+UI: Run locally without docker
+
+git checkout main
+
+cd ads-frontend
+
+npm install
+
+npm start
+
+Run UI using docker docker run -it -p 3000:3000 kartheekj59/mjollnir-ads-frontend
+
+Access UI using http://localhost:3000/
