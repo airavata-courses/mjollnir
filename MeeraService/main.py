@@ -67,8 +67,8 @@ def MeeraService():
 
     cb.ax.tick_params(labelsize=10)
     plt.savefig(
-        '/content/output.png')
-    plt.show()
+        'output.png')
+    #plt.show()
     path = os.getcwd() + '/' + 'output.png'
     with open(path, 'rb') as output:
         encoded = base64.b64encode(output.read())
@@ -78,4 +78,4 @@ def MeeraService():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=7500)
