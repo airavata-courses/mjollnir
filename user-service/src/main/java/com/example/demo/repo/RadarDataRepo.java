@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.model.RadarData;
 import com.example.demo.model.RadarEntity;
-import com.example.demo.model.User;
+import com.example.demo.model.UserEntity;
 
 @Repository
 public interface RadarDataRepo extends JpaRepository<RadarEntity,Long> {

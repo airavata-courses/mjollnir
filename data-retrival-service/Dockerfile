@@ -10,6 +10,7 @@ WORKDIR /data-retrival-service
 
 RUN apt-get update && \
     apt-get install -y gcc && \
+    pip install matplotlib && \
     pip install -r requirements.txt && \
     pip install -U numpy && \
     pip install -U pandas && \

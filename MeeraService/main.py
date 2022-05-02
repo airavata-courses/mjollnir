@@ -74,8 +74,17 @@ def MeeraService():
         encoded = base64.b64encode(output.read())
     json = {'image': encoded.decode()}
 
+    dirs = os.listdir()
+    cur_dir = os.getcwd()
+    for file in dirs:
+        file_path = os.path.join(cur_dir, file)
+        if file.endswith('.gz'):
+            os.remove(file_path)
+        if file.endswith('.png'):
+            os.remove(file_path)
+
     return json
 
 
 if __name__ == '__main__':
-    app.run(port=7500)
+    app.run(host='0.0.0.0',port=7500)

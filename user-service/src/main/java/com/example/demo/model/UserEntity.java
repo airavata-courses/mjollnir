@@ -5,17 +5,17 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class User {
+public class UserEntity {
 
 	@Id
 	private String userName;
 	@Column
 	private String password;
-	public User() {
+	public UserEntity() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(String userName, String password) {
+	public UserEntity(String userName, String password) {
 		this.userName=userName;
 		this.password=password;
 	}
