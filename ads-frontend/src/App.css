@@ -121,6 +121,7 @@ nav ul li {
   background-size: cover;
   background-position: center;
   height: 100vh;
+  margin-top:  7rem;
 }
 
 .main-info {
@@ -134,8 +135,10 @@ nav ul li {
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-family: "Pacifico", cursive;
+  /* font-family: "Pacifico", cursive; */
+  font-size: 15px !important;
   z-index: 1;
+  margin-top:  7rem;
 }
 
 .main-info h1 {

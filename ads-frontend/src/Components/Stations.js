@@ -42,7 +42,9 @@ class Stations extends Component {
             name="location"
             title="Select location"
             list={locations}
-           
+            style={{
+              fontSize: '15px'
+            }}
             onChange={this.onChange}
           />
         </div>

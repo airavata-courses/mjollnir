@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.User;
+import com.example.demo.model.UserEntity;
 import com.example.demo.service.SignInService;
 
 
@@ -37,7 +37,7 @@ public class SignInController {
 	}
 
 	@PostMapping(path = "/root/save")
-	public ResponseEntity saveUser(@RequestBody User user) {
+	public ResponseEntity saveUser(@RequestBody UserEntity user) {
 		
 		
 		this.inService.saveUser(user);
@@ -45,7 +45,7 @@ public class SignInController {
 	}
 	
 	@PostMapping(path = "/root/delete")
-	public ResponseEntity deleteUser(@RequestBody User user) {
+	public ResponseEntity deleteUser(@RequestBody UserEntity user) {
 		
 		
 		this.inService.deleteUser(user);
@@ -53,7 +53,7 @@ public class SignInController {
 	}
 
 	@PostMapping(path = "/root/auth")
-	public ResponseEntity auth(@RequestBody User user) {
+	public ResponseEntity auth(@RequestBody UserEntity user) {
 		
 		
 		if (this.inService.auth(user)==true) {

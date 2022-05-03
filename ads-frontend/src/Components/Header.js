@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 import Stations from './Stations';
-import {getRadarStations,sendData} from '../api_calls.js';
+import {getRadarStations,sendData, sendMerraData} from '../api_calls.js';
 import DisplayImage from "./displayImage";
 import im from './im.json'
 
@@ -24,6 +24,8 @@ const Header = () => {
         : null
     );
     const [encoded_image, setImagedata] = useState('');
+    const [encoded_merra_image, setMerraImagedata] = useState('');
+
     const renderImage=() =>
                 {
                 
@@ -40,6 +42,19 @@ const Header = () => {
                  }).catch(err => {
                  console.log(err);
                  });
+                 sendMerraData().then(res => {
+                
+                    console.log(res);
+               //    const {encoded_image} = res.data.body;
+                                if(res) {
+                                    setMerraImagedata(
+                                       "data:image/png;base64," + res
+                                   )
+                                }
+   
+                    }).catch(err => {
+                    console.log(err);
+                    });
                  }
 
     const handleFailure = (result) => {
@@ -127,7 +142,8 @@ const Header = () => {
                     <div>
                      <form onSubmit={handleSubmit(onSubmit)}>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                    <Grid container justify="space-around">
+                    <div container justify="space-around">
+                    <div style={{ display: 'flex', justifyContent: 'space-evenly'}}>
                         <KeyboardDatePicker
                             disableToolbar
                             variant="inline"
@@ -153,15 +169,19 @@ const Header = () => {
                             />
                             <div>
                             <Stations/>
+                            </div>
                 
                     </div>
-                            </Grid>
+                            </div>
                             </MuiPickersUtilsProvider>
                     </form>
                     </div>
                     
-                    
+                    <div style={{ display: 'flex'}}>
+
                     <DisplayImage image={ encoded_image }/>
+                    <DisplayImage image={ encoded_merra_image }/>
+                    </div>
                     
                     <button className="btn-main-offer contact-btn" type="submit" onClick={renderImage} >submit</button>
                     

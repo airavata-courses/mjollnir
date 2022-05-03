@@ -3,7 +3,7 @@ package com.example.demo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.model.User;
+import com.example.demo.model.UserEntity;
 import com.example.demo.repo.SignInRepo;
 
 @Service
@@ -16,7 +16,7 @@ public class SignInService {
 		super();
 		
 	}
-	public void saveUser(User user) {
+	public void saveUser(UserEntity user) {
 		try {
 			repo.save(user);
 		}
@@ -24,7 +24,7 @@ public class SignInService {
 			System.out.println(e.toString());
 	}
 	}
-	public void deleteUser(User user) {
+	public void deleteUser(UserEntity user) {
 		try {
 			repo.delete(user);
 		}
@@ -33,9 +33,9 @@ public class SignInService {
 		}
 	}
 	
-	public boolean auth(User user) {
+	public boolean auth(UserEntity user) {
 		try {
-			User result=repo.findByuserName(user.getUserName());
+			UserEntity result=repo.findByuserName(user.getUserName());
 			if (result==null || result.getPassword()!=user.getPassword())
 			{
 				return false;
