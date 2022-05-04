@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: meeraservice
+spec:
+  selector:
+    matchLabels:
+      app: meeraservice
+  template:
+    metadata:
+      labels:
+        app: meeraservice
+    spec:
+      containers:
+      - name: meeraservice
+        image: kartheekj59/meeraservice
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 7500
