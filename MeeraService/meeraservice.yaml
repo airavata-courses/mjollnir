@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: meeraservice
+spec:
+  selector:
+    app: meeraservice
+  type: LoadBalancer
+  ports:
+  - port: 7500
+    targetPort: 7500
+    nodePort: 32210
