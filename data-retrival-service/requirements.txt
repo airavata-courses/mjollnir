@@ -1,4 +1,11 @@
+<<<<<<< HEAD
+Flask==1.1.2
+matplotlib==3.3.4
+=======
 Flask==2.1.0
 matplotlib==3.5.1
+>>>>>>> 28d1f341c4370071366f59059c489be355811cd1
 nexradaws==1.1
 pytz==2021.1
+netCDF4
+scipy
