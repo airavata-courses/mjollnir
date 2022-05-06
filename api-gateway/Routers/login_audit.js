@@ -24,7 +24,7 @@ router.get('/radarcontroller/radarlocations', (req, res) => {
     console.log("Root hit");
     api.get(req.path,{Headers:{'Access-Control-Allow-Origin': '*',}}).then(resp => {
         res.send(resp.data);
-    });
+    });clearImmediate
 });
 router.get('/usercontroller/root', (req, res) => {
     console.log("Root hit");

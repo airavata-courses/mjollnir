@@ -14,9 +14,11 @@ const config = {
 
 	routeURLS: {
 
-	login_audit: "http://127.0.0.1:8080/",
+	login_audit: "http://0.0.0.0:8080/",
 
-	DataRetrival: "http://127.0.0.1:8000/",
+	DataRetrival: "http://0.0.0.0:5000/",
+
+	MerraRetrival :"http://0.0.0.0:7500/",
 	
 	}
 };
