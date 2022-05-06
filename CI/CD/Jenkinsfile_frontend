@@ -1,0 +1,50 @@
+pipeline {
+  agent any
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '5'))
+  }
+  environment {
+    DOCKERHUB_CREDENTIALS = credentials('kartheek-dockerhub')
+  }
+  stages {
+    stage('Initialize') {
+            steps {
+                script {
+                    properties([pipelineTriggers([pollSCM('* * * * *')])])
+                }
+                git branch: 'full-app' , url: 'https://github.com/airavata-courses/mjollnir.git'
+            }
+        }
+    stage('Image Build') {
+      steps {
+        sh 'docker build -t kartheekj59/front_end .'
+      }
+    }
+    stage('Docker Login') {
+      steps {
+        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+      }
+    }
+    stage('Docker Push') {
+      steps {
+        sh 'docker image push kartheekj59/front_end' 
+      }
+    }
+    stage('Deploy image'){
+         steps{
+            sshagent(credentials:['kuber-root-some1']){
+              sh """ssh -tt root@192.168.49.2 -o "StrictHostKeyChecking no"  << EOF
+                   
+                   kubectl rollout restart kartheekj59/front_end 
+                  
+          }
+        echo "success deploy"
+         }
+       }
+  }
+  post {
+    always {
+      sh 'docker logout'
+    }
+  }
+}
