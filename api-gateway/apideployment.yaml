@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateaway
+spec:
+  selector:
+    matchLabels:
+      app: api-gateaway
+  template:
+    metadata:
+      labels:
+        app: api-gateaway
+    spec:
+      containers:
+      - name: api-gateaway
+        image: kartheekj59/api-gateaway
+        ports:
+        - containerPort: 5500

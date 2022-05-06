@@ -13,7 +13,7 @@ public class RadarEntity {
 	    @GeneratedValue(strategy = GenerationType.AUTO) 
 	    private long id;
 	private String radarId;
-	private String userName;
+	//private String userName;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	public long getId() {
@@ -28,12 +28,12 @@ public class RadarEntity {
 	public void setRadarId(String radarId) {
 		this.radarId = radarId;
 	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+//	public String getUserName() {
+//		return userName;
+//	}
+//	public void setUserName(String userName) {
+//		this.userName = userName;
+//	}
 	public LocalDate getStartDate() {
 		return startDate;
 	}
@@ -46,10 +46,10 @@ public class RadarEntity {
 	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
-	public RadarEntity( String radarId, String userName, LocalDate startDate, LocalDate endDate) {
+	public RadarEntity( String radarId, LocalDate startDate, LocalDate endDate) {
 		super();
 		this.radarId = radarId;
-		this.userName = userName;
+		//this.userName = userName;
 		this.startDate = startDate;
 		this.endDate = endDate;
 	}
